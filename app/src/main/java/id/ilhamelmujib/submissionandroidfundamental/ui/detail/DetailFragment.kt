@@ -64,21 +64,21 @@ class DetailFragment : Fragment() {
                     .into(rivAvatar)
                 tvName.text = it.name
                 tvUsername.text = "@${it.login}"
-            }
 
-            val titles = listOf("Follower", "Following")
-            val pagerAdapter =
-                PagerAdapter(
-                    (requireActivity() as MainActivity),
-                    listOf(
-                        FollowFragment().newInstance(args.user.login, "followers"),
-                        FollowFragment().newInstance(args.user.login, "following")
+                val titles = listOf("Followers (${it.followers})", "Following (${it.following})")
+                val pagerAdapter =
+                    PagerAdapter(
+                        (requireActivity() as MainActivity),
+                        listOf(
+                            FollowFragment().newInstance(args.user.login, "followers"),
+                            FollowFragment().newInstance(args.user.login, "following")
+                        )
                     )
-                )
-            viewPager.adapter = pagerAdapter
-            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-                tab.text = titles[position]
-            }.attach()
+                viewPager.adapter = pagerAdapter
+                TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+                    tab.text = titles[position]
+                }.attach()
+            }
         }
     }
 
