@@ -1,11 +1,12 @@
 package id.ilhamelmujib.submissionandroidfundamental
 
-import android.app.SearchManager
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.widget.SearchView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import androidx.navigation.ui.navigateUp
 import id.ilhamelmujib.submissionandroidfundamental.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,5 +17,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return findNavController(R.id.nav_host_fragment).navigateUp()
+    }
+
 }

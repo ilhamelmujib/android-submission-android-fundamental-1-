@@ -8,10 +8,18 @@
         android:id="@+id/userFragment"
         android:name="id.ilhamelmujib.submissionandroidfundamental.ui.user.UserFragment"
         android:label="fragment_user"
-        tools:layout="@layout/fragment_user" />
+        tools:layout="@layout/fragment_user">
+        <action
+            android:id="@+id/action_userFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="id.ilhamelmujib.submissionandroidfundamental.ui.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="user"
+            app:argType="id.ilhamelmujib.submissionandroidfundamental.model.User" />
+    </fragment>
 </navigation>
