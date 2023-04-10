@@ -8,9 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ilhamelmujib.submissionandroidfundamental.databinding.FragmentFollowBinding
-import id.ilhamelmujib.submissionandroidfundamental.databinding.FragmentUserBinding
 import id.ilhamelmujib.submissionandroidfundamental.ui.adapter.UserAdapter
-import id.ilhamelmujib.submissionandroidfundamental.ui.user.UserViewModel
 
 class FollowFragment : Fragment() {
     private lateinit var binding: FragmentFollowBinding
