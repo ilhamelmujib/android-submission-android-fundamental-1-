@@ -20,6 +20,14 @@
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="user"
-            app:argType="id.ilhamelmujib.submissionandroidfundamental.model.User" />
+            app:argType="id.ilhamelmujib.submissionandroidfundamental.data.local.entity.UserEntity" />
     </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="id.ilhamelmujib.submissionandroidfundamental.ui.favorite.FavoriteFragment"
+        android:label="FavoriteFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="id.ilhamelmujib.submissionandroidfundamental.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

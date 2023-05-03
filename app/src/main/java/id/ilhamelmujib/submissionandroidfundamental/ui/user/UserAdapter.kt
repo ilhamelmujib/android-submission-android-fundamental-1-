@@ -1,19 +1,19 @@
-package id.ilhamelmujib.submissionandroidfundamental.ui.adapter
+package id.ilhamelmujib.submissionandroidfundamental.ui.user
 
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import id.ilhamelmujib.submissionandroidfundamental.R
+import id.ilhamelmujib.submissionandroidfundamental.data.local.entity.UserEntity
 import id.ilhamelmujib.submissionandroidfundamental.databinding.ItemUserBinding
-import id.ilhamelmujib.submissionandroidfundamental.model.User
-import id.ilhamelmujib.submissionandroidfundamental.ui.user.UserFragmentDirections
 
-class UserAdapter(private val list: List<User>, private val isClickable: Boolean = true) :
-    RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserAdapter(
+    private val list: List<UserEntity>, private val onClickListener: OnClickListener
+) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val binding = ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -25,18 +25,20 @@ class UserAdapter(private val list: List<User>, private val isClickable: Boolean
         val user = list[position]
         val context = holder.binding.root.context
         holder.binding.run {
-            Glide
-                .with(context)
-                .load(user.avatarURL)
-                .centerCrop()
-                .placeholder(ColorDrawable(Color.GRAY))
-                .into(rivAvatar)
+            Glide.with(context).load(user.avatarURL).centerCrop()
+                .placeholder(ColorDrawable(Color.GRAY)).into(rivAvatar)
             tvUsername.text = user.login
             tvScore.text = "Score: ${user.score}"
             root.setOnClickListener {
-                if (isClickable) {
-                    val action = UserFragmentDirections.actionUserFragmentToDetailFragment(user)
-                    root.findNavController().navigate(action)
+                onClickListener.onItemClick(user)
+            }
+
+            btnFavorite.run {
+                setImageResource(if (user.isFavorite) R.drawable.ic_favorite else R.drawable.ic_favorite_border)
+                setOnClickListener {
+                    onClickListener.onFavoriteClick(user)
+                    user.isFavorite = !user.isFavorite
+                    notifyItemChanged(position)
                 }
             }
         }
@@ -47,4 +49,11 @@ class UserAdapter(private val list: List<User>, private val isClickable: Boolean
     }
 
     class UserViewHolder(val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root)
+
+    interface OnClickListener {
+        fun onItemClick(user: UserEntity)
+        fun onFavoriteClick(user: UserEntity)
+    }
 }
+
+

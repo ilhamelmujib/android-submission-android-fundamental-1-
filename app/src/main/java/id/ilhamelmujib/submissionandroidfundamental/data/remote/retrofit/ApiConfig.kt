@@ -1,4 +1,4 @@
-package id.ilhamelmujib.submissionandroidfundamental.service
+package id.ilhamelmujib.submissionandroidfundamental.data.remote.retrofit
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

@@ -24,8 +24,7 @@
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_score"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_favorite"
+        app:layout_constraintEnd_toStartOf="@+id/btn_delete"
         app:layout_constraintStart_toEndOf="@id/riv_avatar"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Maria Gianti Handayani" />
@@ -36,18 +35,18 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_favorite"
+        app:layout_constraintEnd_toStartOf="@+id/btn_delete"
         app:layout_constraintStart_toEndOf="@id/riv_avatar"
         app:layout_constraintTop_toBottomOf="@+id/tv_username"
         tools:text="Score: 1.0" />
 
     <ImageButton
-        android:id="@+id/btn_favorite"
+        android:id="@+id/btn_delete"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:background="?attr/selectableItemBackground"
         android:contentDescription="@null"
-        android:src="@drawable/ic_favorite_border"
+        android:src="@drawable/ic_delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

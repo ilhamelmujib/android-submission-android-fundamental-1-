@@ -1,20 +1,16 @@
-package id.ilhamelmujib.submissionandroidfundamental.model
+package id.ilhamelmujib.submissionandroidfundamental.data.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
 import com.google.gson.annotations.SerializedName
 
-@Parcelize
-data class Result(
+data class UserResponse(
     @field:SerializedName("totalCount") val totalCount: Long,
 
     @field:SerializedName("incomplete_results") val incompleteResults: Boolean,
 
-    @field:SerializedName("items") val items: List<User>
-) : Parcelable
+    @field:SerializedName("items") val items: List<UserItem>
+)
 
-@Parcelize
-data class User(
+data class UserItem(
     @field:SerializedName("login") val login: String,
 
     @field:SerializedName("id") val id: Long,
@@ -52,10 +48,10 @@ data class User(
     @field:SerializedName("site_admin") val siteAdmin: Boolean,
 
     @field:SerializedName("score") val score: Long
-) : Parcelable
+)
 
 
-data class Detail(
+data class DetailUserResponse(
     @field:SerializedName("login") val login: String,
 
     @field:SerializedName("id") val id: Long,

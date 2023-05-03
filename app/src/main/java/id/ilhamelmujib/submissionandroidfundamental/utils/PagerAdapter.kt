@@ -1,4 +1,4 @@
-package id.ilhamelmujib.submissionandroidfundamental.ui.adapter
+package id.ilhamelmujib.submissionandroidfundamental.utils
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment

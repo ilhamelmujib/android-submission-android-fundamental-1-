@@ -4,15 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import id.ilhamelmujib.submissionandroidfundamental.data.Result
 import id.ilhamelmujib.submissionandroidfundamental.databinding.FragmentFollowBinding
-import id.ilhamelmujib.submissionandroidfundamental.ui.adapter.UserAdapter
 
 class FollowFragment : Fragment() {
     private lateinit var binding: FragmentFollowBinding
-    private val viewModel by viewModels<FollowViewModel>()
+    private val viewModel: FollowViewModel by viewModels<FollowViewModel>() {
+        FollowViewModelFactory.getInstance(requireContext())
+    }
 
     fun newInstance(username: String, category: String): Fragment {
         val args = Bundle().apply {
@@ -42,17 +45,31 @@ class FollowFragment : Fragment() {
         val username = arguments?.getString(EXTRA_USERNAME) ?: ""
         val category = arguments?.getString(EXTRA_CATEGORY) ?: ""
 
-        viewModel.followUser(username, category)
-        viewModel.user.observe(viewLifecycleOwner) {
-            val mAdapter = UserAdapter(it, false)
-            binding.rvUser.run {
-                layoutManager = LinearLayoutManager(requireContext())
-                adapter = mAdapter
+        viewModel.followUser(username, category).observe(viewLifecycleOwner){result->
+            if (result != null){
+                binding.run {
+                    when (result) {
+                        is Result.Loading -> progressBar.visibility = View.VISIBLE
+                        is Result.Error -> {
+                            progressBar.visibility = View.GONE
+                            Toast.makeText(
+                                context, "Terjadi kesalahan" + result.error, Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        is Result.Success -> {
+                            progressBar.visibility = View.GONE
+                            val mAdapter = FollowAdapter(result.data)
+                            rvFollow.run {
+                                layoutManager = LinearLayoutManager(requireContext())
+                                adapter = mAdapter
+                            }
+                        }
+
+                    }
+                }
             }
         }
-        viewModel.isLoading.observe(viewLifecycleOwner) {
-            binding.progressBar.visibility = if (it) View.VISIBLE else View.GONE
-        }
+
     }
 
 }
