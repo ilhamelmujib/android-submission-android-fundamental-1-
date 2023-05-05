@@ -14,15 +14,15 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import id.ilhamelmujib.submissionandroidfundamental.data.Result
-import id.ilhamelmujib.submissionandroidfundamental.ui.MainActivity
 import id.ilhamelmujib.submissionandroidfundamental.databinding.FragmentDetailBinding
-import id.ilhamelmujib.submissionandroidfundamental.utils.PagerAdapter
+import id.ilhamelmujib.submissionandroidfundamental.ui.MainActivity
 import id.ilhamelmujib.submissionandroidfundamental.ui.detail.follow.FollowFragment
+import id.ilhamelmujib.submissionandroidfundamental.utils.PagerAdapter
 
 class DetailFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailBinding
-    val args: DetailFragmentArgs by navArgs()
+    private val args: DetailFragmentArgs by navArgs()
     private val viewModel by viewModels<DetailViewModel>(){
         DetailViewModelFactory.getInstance(requireContext())
     }

@@ -1,8 +1,6 @@
 package id.ilhamelmujib.submissionandroidfundamental.ui
 
 import android.content.Context
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import id.ilhamelmujib.submissionandroidfundamental.di.Injection

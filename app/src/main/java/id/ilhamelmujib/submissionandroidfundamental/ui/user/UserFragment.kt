@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import id.ilhamelmujib.submissionandroidfundamental.databinding.FragmentUserBinding
 import id.ilhamelmujib.submissionandroidfundamental.data.Result
 import id.ilhamelmujib.submissionandroidfundamental.data.local.entity.UserEntity
+import id.ilhamelmujib.submissionandroidfundamental.databinding.FragmentUserBinding
 
 class UserFragment : Fragment() {
 

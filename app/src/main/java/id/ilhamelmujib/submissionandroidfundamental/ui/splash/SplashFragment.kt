@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import id.ilhamelmujib.submissionandroidfundamental.databinding.FragmentSplashBinding
-import kotlinx.coroutines.CoroutineScope
 
 class SplashFragment : Fragment() {
 

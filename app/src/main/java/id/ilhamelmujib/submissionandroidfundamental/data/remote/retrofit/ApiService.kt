@@ -1,11 +1,9 @@
 package id.ilhamelmujib.submissionandroidfundamental.data.remote.retrofit
 
-import androidx.lifecycle.LiveData
 import id.ilhamelmujib.submissionandroidfundamental.data.model.DetailUserResponse
-import retrofit2.Call
-import retrofit2.http.*
-import id.ilhamelmujib.submissionandroidfundamental.data.model.UserResponse
 import id.ilhamelmujib.submissionandroidfundamental.data.model.UserItem
+import id.ilhamelmujib.submissionandroidfundamental.data.model.UserResponse
+import retrofit2.http.*
 
 interface ApiService {
     @GET("search/users")
