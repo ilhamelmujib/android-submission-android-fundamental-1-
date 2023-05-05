@@ -38,9 +38,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
-        android:text="Muhamad Ilham"
+        tools:text="Muhamad Ilham"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="?android:textColorPrimary"
         android:visibility="gone" />
 
     <TextView
@@ -50,7 +50,7 @@
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="5dp"
         android:alpha="0.6"
-        android:text="ilham.elmujib@gmail.com"
+        tools:text="ilham.elmujib@gmail.com"
         android:textAlignment="center"
         android:textSize="11sp"
         android:visibility="gone" />
@@ -61,12 +61,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        app:tabSelectedTextColor="@color/black"
-        app:tabTextColor="@android:color/darker_gray" />
+        app:tabSelectedTextColor="?android:textColorPrimary"
+        app:tabTextColor="?android:textColorSecondary" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        />
 
 </LinearLayout>

@@ -21,8 +21,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:textColor="@android:color/black"
         android:textSize="18sp"
+        android:textColor="?android:textColorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/tv_score"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_favorite"
@@ -51,7 +51,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="#75000000" />
+        app:tint="?android:textColorSecondary" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
