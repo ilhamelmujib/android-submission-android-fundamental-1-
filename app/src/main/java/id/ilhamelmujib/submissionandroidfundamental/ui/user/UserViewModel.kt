@@ -7,12 +7,14 @@ import id.ilhamelmujib.submissionandroidfundamental.data.local.entity.UserEntity
 import kotlinx.coroutines.launch
 
 class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
-    fun searchUser(username: String) = userRepository.searchUser(username)
 
-    fun setFavorite(user: UserEntity){
-        viewModelScope.launch {
-            userRepository.setFavorite(user)
-        }
+    val user = userRepository.user;
+    fun searchUser(username: String) = viewModelScope.launch {
+        userRepository.searchUser(username)
+    }
+
+    fun setFavorite(user: UserEntity) = viewModelScope.launch {
+        userRepository.setFavorite(user)
     }
 
 }

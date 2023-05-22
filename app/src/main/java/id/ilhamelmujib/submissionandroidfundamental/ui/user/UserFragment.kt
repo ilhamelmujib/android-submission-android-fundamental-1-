@@ -48,7 +48,8 @@ class UserFragment : Fragment() {
     }
 
     private fun initObserver() {
-        viewModel.searchUser("a").observe(viewLifecycleOwner) { result ->
+        viewModel.searchUser("a");
+        viewModel.user.observe(viewLifecycleOwner) { result ->
             if (result != null) {
                 when (result) {
                     is Result.Loading -> binding.progressBar.visibility = View.VISIBLE

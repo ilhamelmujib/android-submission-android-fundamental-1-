@@ -13,8 +13,11 @@ class UserRepository private constructor(
     private val apiService: ApiService,
     private val userDao: UserDao
 ) {
-    fun searchUser(username: String): LiveData<Result<List<UserEntity>>> = liveData {
-        emit(Result.Loading)
+
+    private var _users = MutableLiveData<Result<List<UserEntity>>>()
+    val user: LiveData<Result<List<UserEntity>>> = _users
+    suspend fun searchUser(username: String) {
+        _users.postValue(Result.Loading)
         try {
             val response = apiService.searchUser(username)
             val users = response.items.map { user ->
@@ -27,10 +30,10 @@ class UserRepository private constructor(
                     isFavorite
                 )
             }
-            emitSource(MutableLiveData(Result.Success(users)))
+            _users.postValue(Result.Success(users))
         } catch (e: Exception) {
             Log.d("UserRepository", "searchUser: ${e.message.toString()} ")
-            emit(Result.Error(e.message.toString()))
+            _users.postValue(Result.Error(e.message.toString()))
         }
     }
 
