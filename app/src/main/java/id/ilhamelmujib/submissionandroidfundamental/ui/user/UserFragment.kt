@@ -37,11 +37,11 @@ class UserFragment : Fragment() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 binding.searchView.clearFocus()
+                viewModel.searchUser(query)
                 return false
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                viewModel.searchUser(newText)
                 return false
             }
         })
