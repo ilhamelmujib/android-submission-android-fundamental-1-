@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import id.ilhamelmujib.submissionandroidfundamental.data.local.entity.UserEntity
 import id.ilhamelmujib.submissionandroidfundamental.databinding.FragmentFavoriteBinding
 import id.ilhamelmujib.submissionandroidfundamental.ui.MainActivity
 
@@ -37,6 +39,10 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.getFavorite().observe(viewLifecycleOwner) {
             val mAdapter = FavoriteAdapter(it, object : FavoriteAdapter.OnClickListener {
+                override fun onItemClick(user: UserEntity) {
+                    val action = FavoriteFragmentDirections.actionFavoriteFragmentToDetailFragment(user)
+                    findNavController().navigate(action)
+                }
                 override fun onDeleteClick(id: Long) {
                     viewModel.deleteFavorite(id)
                 }

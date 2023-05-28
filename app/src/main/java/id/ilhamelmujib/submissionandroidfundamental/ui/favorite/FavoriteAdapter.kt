@@ -32,6 +32,9 @@ class FavoriteAdapter(private val list: List<UserEntity>, private val onClickLis
                 .into(rivAvatar)
             tvUsername.text = user.login
             tvScore.text = "Score: ${user.score}"
+            root.setOnClickListener {
+                onClickListener.onItemClick(user)
+            }
             btnDelete.setOnClickListener {
                 onClickListener.onDeleteClick(user.id)
                 notifyItemRemoved(position)
@@ -47,6 +50,7 @@ class FavoriteAdapter(private val list: List<UserEntity>, private val onClickLis
         RecyclerView.ViewHolder(binding.root)
 
     interface OnClickListener{
+        fun onItemClick(user: UserEntity)
         fun onDeleteClick(id: Long)
     }
 }
